@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Minat dan Bakat Anak SMA/SMK</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background-color: #004d26;
+      color: #ffffff;
+      padding: 16px 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    h2.section-title {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #004d26;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .form-group small {
+      display: block;
+      font-size: 11px;
+      color: #777;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid #ccd1d9;
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    textarea {
+      min-height: 55px;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #007a3d;
+      box-shadow: 0 0 0 1px rgba(0, 122, 61, 0.2);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    }
+
+    button:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    #generateBtn {
+      background-color: #007a3d;
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    #generateBtn:disabled {
+      background-color: #a8b5ad;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    #copyBtn {
+      background-color: #f0f0f0;
+      color: #333;
+      border: 1px solid #d0d0d0;
+    }
+
+    #copyBtn.copied {
+      background-color: #cdebd8;
+      border-color: #7fbf9f;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .status span.ok {
+      color: #007a3d;
+      font-weight: 600;
+    }
+
+    .status span.not-ok {
+      color: #c0392b;
+      font-weight: 600;
+    }
+
+    #outputPrompt {
+      width: 100%;
+      min-height: 260px;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccd1d9;
+      font-size: 12px;
+      font-family: Consolas, "Courier New", monospace;
+      background: #fafafa;
+      white-space: pre-wrap;
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: #777;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Test Minat dan Bakat Anak SMA/SMK</h1>
+    <p>Create by @Dadang Sudrajat-IKMI Cirebon - Supported by AI</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 class="section-title">Identitas Anak SMA/SMK</h2>
+      <p class="section-desc">Isi data identitas singkat anak yang akan dianalisis minat dan bakatnya.</p>
+
+      <div class="form-group">
+        <label for="namaSiswa">1. Siapa nama anak SMA yang akan diketahui bakat dan minatnya secara akurat?</label>
+        <input type="text" id="namaSiswa" placeholder="Contoh: Andi Pratama" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Aktivitas dan Kegemaran</h2>
+      <p class="section-desc">Pertanyaan untuk memetakan apa yang disukai anak dalam keseharian dan pelajaran.</p>
+
+      <div class="form-group"><label for="act1">1. Apa yang paling kamu sukai untuk dilakukan di waktu luang?</label><textarea id="act1"></textarea></div>
+      <div class="form-group"><label for="act2">2. Apakah kamu memiliki hobi atau minat tertentu?</label><textarea id="act2"></textarea></div>
+      <div class="form-group"><label for="act3">3. Apa yang membuatmu merasa senang dan bersemangat?</label><textarea id="act3"></textarea></div>
+      <div class="form-group"><label for="act4">4. Dalam mata pelajaran apa kamu merasa paling pandai atau tertarik?</label><textarea id="act4"></textarea></div>
+      <div class="form-group"><label for="act5">5. Apakah kamu mengikuti kegiatan ekstrakurikuler di sekolah? Jika ya, apa saja?</label><textarea id="act5"></textarea></div>
+      <div class="form-group"><label for="act6">6. Apakah kamu suka mengerjakan tugas atau proyek tertentu? Jelaskan apa yang kamu sukai dari tugas/proyek tersebut.</label><textarea id="act6"></textarea></div>
+      <div class="form-group"><label for="act7">7. Apakah kamu sering dipuji oleh orang lain atas suatu hal? Apa itu?</label><textarea id="act7"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Keterampilan dan Kemampuan</h2>
+      <p class="section-desc">Pertanyaan untuk menggali kemampuan, bakat, dan cara kerja anak.</p>
+
+      <div class="form-group"><label for="skill1">1. Apa yang menurutmu kamu lakukan dengan baik? Berikan contohnya.</label><textarea id="skill1"></textarea></div>
+      <div class="form-group"><label for="skill2">2. Apakah kamu memiliki bakat atau keahlian khusus? Apa itu?</label><textarea id="skill2"></textarea></div>
+      <div class="form-group"><label for="skill3">3. Apakah kamu pernah mengikuti lomba atau kompetisi? Apa hasilnya?</label><textarea id="skill3"></textarea></div>
+      <div class="form-group"><label for="skill4">4. Apakah kamu pandai dalam bidang seni, musik, olahraga, atau teknologi?</label><textarea id="skill4"></textarea></div>
+      <div class="form-group"><label for="skill5">5. Apakah kamu suka membantu orang lain? Dalam hal apa?</label><textarea id="skill5"></textarea></div>
+      <div class="form-group"><label for="skill6">6. Apakah kamu suka belajar hal-hal baru? Apa yang ingin kamu pelajari?</label><textarea id="skill6"></textarea></div>
+      <div class="form-group"><label for="skill7">7. Apakah kamu suka bekerja sama dengan orang lain atau lebih suka bekerja sendiri?</label><textarea id="skill7"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Cita-cita dan Tujuan Masa Depan</h2>
+      <p class="section-desc">Pertanyaan untuk memahami arah masa depan dan nilai-nilai penting bagi anak.</p>
+
+      <div class="form-group"><label for="future1">1. Apa yang ingin kamu capai dalam hidup?</label><textarea id="future1"></textarea></div>
+      <div class="form-group"><label for="future2">2. Pekerjaan apa yang kamu impikan? Mengapa?</label><textarea id="future2"></textarea></div>
+      <div class="form-group"><label for="future3">3. Apa yang menurutmu penting dalam sebuah pekerjaan?</label><textarea id="future3"></textarea></div>
+      <div class="form-group"><label for="future4">4. Bagaimana kamu ingin menjalani hidupmu di masa depan?</label><textarea id="future4"></textarea></div>
+      <div class="form-group"><label for="future5">5. Apa yang ingin kamu kontribusikan kepada dunia?</label><textarea id="future5"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Pertanyaan Refleksi Diri</h2>
+      <p class="section-desc">Pertanyaan untuk menggali cara anak memandang dirinya sendiri.</p>
+
+      <div class="form-group"><label for="self1">1. Menurutmu, kamu orang yang seperti apa? Jelaskan.</label><textarea id="self1"></textarea></div>
+      <div class="form-group"><label for="self2">2. Apa yang membuatmu unik?</label><textarea id="self2"></textarea></div>
+      <div class="form-group"><label for="self3">3. Apa kelebihan dan kekuranganmu?</label><textarea id="self3"></textarea></div>
+      <div class="form-group"><label for="self4">4. Apa yang ingin kamu ubah dari dirimu?</label><textarea id="self4"></textarea></div>
+      <div class="form-group"><label for="self5">5. Apa yang membuatmu bangga pada diri sendiri?</label><textarea id="self5"></textarea></div>
+      <div class="form-group"><label for="self6">6. Orang seperti apa yang kamu kagumi? Mengapa?</label><textarea id="self6"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Pertanyaan Tambahan</h2>
+      <p class="section-desc">Informasi tambahan untuk memperkaya analisis minat dan bakat.</p>
+
+      <div class="form-group"><label for="add1">1. Apakah kamu pernah mengikuti tes bakat atau minat sebelumnya? Jika ya, apa hasilnya?</label><textarea id="add1"></textarea></div>
+      <div class="form-group"><label for="add2">2. Apakah kamu memiliki orang tua, guru, atau konselor yang dapat memberikan informasi tentang bakat dan minatmu?</label><textarea id="add2"></textarea></div>
+      <div class="form-group"><label for="add3">3. Apakah kamu ada kesulitan dalam menentukan bakat dan minatmu?</label><textarea id="add3"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Generate Prompt GURU PSIKOLOG</h2>
+      <p class="section-desc">
+        Setelah semua pertanyaan terisi, klik tombol <strong>GURU PSIKOLOG</strong> untuk membuat prompt analisis komprehensif.
+        Prompt ini bisa langsung ditempel di ChatGPT/AI lain untuk dianalisis oleh “Psikolog virtual”.
+      </p>
+
+      <div class="actions">
+        <button id="generateBtn" disabled>🧠 GURU PSIKOLOG – Generate Prompt</button>
+        <button id="copyBtn" type="button">📋 Copy prompt</button>
+        <div class="status" id="statusText">Status: <span class="not-ok">Belum semua jawaban terisi</span></div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label for="outputPrompt" style="font-size:13px; font-weight:600; display:block; margin-bottom:4px;">Prompt Hasil Generate (siap pakai):</label>
+        <textarea id="outputPrompt" placeholder="Prompt akan muncul di sini setelah semua pertanyaan terisi dan tombol GURU PSIKOLOG diklik."></textarea>
+        <p class="footer-note">
+          Catatan: Prompt ini sudah memuat instruksi agar AI melakukan analisis psikologis komprehensif
+          dan membuat visualisasi <em>grafik batang</em> untuk berbagai dimensi minat & bakat anak.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const requiredSelectors = [
+      "#namaSiswa",
+      "#act1", "#act2", "#act3", "#act4", "#act5", "#act6", "#act7",
+      "#skill1", "#skill2", "#skill3", "#skill4", "#skill5", "#skill6", "#skill7",
+      "#future1", "#future2", "#future3", "#future4", "#future5",
+      "#self1", "#self2", "#self3", "#self4", "#self5", "#self6",
+      "#add1", "#add2", "#add3"
+    ];
+
+    const inputs = requiredSelectors.map(sel => document.querySelector(sel));
+    const generateBtn = document.getElementById("generateBtn");
+    const copyBtn = document.getElementById("copyBtn");
+    const statusText = document.getElementById("statusText");
+    const outputPrompt = document.getElementById("outputPrompt");
+
+    function checkCompletion() {
+      const allFilled = inputs.every(el => el && el.value.trim() !== "");
+      generateBtn.disabled = !allFilled;
+      statusText.innerHTML = allFilled
+        ? 'Status: <span class="ok">Semua jawaban sudah terisi – siap generate prompt</span>'
+        : 'Status: <span class="not-ok">Belum semua jawaban terisi</span>';
+    }
+
+    inputs.forEach(el => {
+      if (el) el.addEventListener("input", checkCompletion);
+    });
+
+    function generatePrompt() {
+      const getV = id => (document.getElementById(id)?.value || "").trim();
+      const nama = getV("namaSiswa");
+
+      const promptText = `
+Anda adalah seorang PSIKOLOG PENDIDIKAN dan KONSELOR KARIER yang sangat berpengalaman dalam asesmen minat–bakat remaja SMA/SMK.
+
+TUGAS UTAMA:
+1. Menganalisis secara komprehensif minat, bakat, gaya belajar, dan potensi karier seorang siswa berdasarkan jawaban kuesioner di bawah.
+2. Memberikan rekomendasi jurusan (SMA/SMK maupun perkuliahan) dan arah karier yang paling selaras dengan profilnya.
+3. Menyajikan hasil dalam bentuk:
+   - Ulasan naratif profesional yang mudah dipahami orang tua dan siswa.
+   - Visualisasi GRAFIK BATANG (dalam format teks/Markdown) untuk menggambarkan kekuatan relatif pada beberapa dimensi minat–bakat.
+
+KONTEKS:
+- Siswa berada pada fase SMA/SMK dan sedang mencari arah minat dan bakat secara lebih terarah.
+- Data berasal dari pengisian mandiri oleh siswa.
+- Analisis yang diminta bukan diagnosis klinis, tetapi pemetaan potensi, minat, dan rekomendasi pengembangan diri.
+
+===================================================
+DATA SISWA (JAWABAN ASLI)
+===================================================
+
+[IDENTITAS]
+- Nama siswa: ${nama}
+
+[AKTIVITAS & KEGEMARAN]
+1) Apa yang paling kamu sukai untuk dilakukan di waktu luang?
+   "${getV("act1")}"
+
+2) Apakah kamu memiliki hobi atau minat tertentu?
+   "${getV("act2")}"
+
+3) Apa yang membuatmu merasa senang dan bersemangat?
+   "${getV("act3")}"
+
+4) Dalam mata pelajaran apa kamu merasa paling pandai atau tertarik?
+   "${getV("act4")}"
+
+5) Apakah kamu mengikuti kegiatan ekstrakurikuler di sekolah? Jika ya, apa saja?
+   "${getV("act5")}"
+
+6) Apakah kamu suka mengerjakan tugas atau proyek tertentu? Jelaskan apa yang kamu sukai dari tugas/proyek tersebut.
+   "${getV("act6")}"
+
+7) Apakah kamu sering dipuji oleh orang lain atas suatu hal? Apa itu?
+   "${getV("act7")}"
+
+[KETERAMPILAN & KEMAMPUAN]
+1) Apa yang menurutmu kamu lakukan dengan baik? Berikan contohnya.
+   "${getV("skill1")}"
+
+2) Apakah kamu memiliki bakat atau keahlian khusus? Apa itu?
+   "${getV("skill2")}"
+
+3) Apakah kamu pernah mengikuti lomba atau kompetisi? Apa hasilnya?
+   "${getV("skill3")}"
+
+4) Apakah kamu pandai dalam bidang seni, musik, olahraga, atau teknologi?
+   "${getV("skill4")}"
+
+5) Apakah kamu suka membantu orang lain? Dalam hal apa?
+   "${getV("skill5")}"
+
+6) Apakah kamu suka belajar hal-hal baru? Apa yang ingin kamu pelajari?
+   "${getV("skill6")}"
+
+7) Apakah kamu suka bekerja sama dengan orang lain atau lebih suka bekerja sendiri?
+   "${getV("skill7")}"
+
+[CITA-CITA & TUJUAN MASA DEPAN]
+1) Apa yang ingin kamu capai dalam hidup?
+   "${getV("future1")}"
+
+2) Pekerjaan apa yang kamu impikan? Mengapa?
+   "${getV("future2")}"
+
+3) Apa yang menurutmu penting dalam sebuah pekerjaan?
+   "${getV("future3")}"
+
+4) Bagaimana kamu ingin menjalani hidupmu di masa depan?
+   "${getV("future4")}"
+
+5) Apa yang ingin kamu kontribusikan kepada dunia?
+   "${getV("future5")}"
+
+[REFLEKSI DIRI]
+1) Menurutmu, kamu orang yang seperti apa? Jelaskan.
+   "${getV("self1")}"
+
+2) Apa yang membuatmu unik?
+   "${getV("self2")}"
+
+3) Apa kelebihan dan kekuranganmu?
+   "${getV("self3")}"
+
+4) Apa yang ingin kamu ubah dari dirimu?
+   "${getV("self4")}"
+
+5) Apa yang membuatmu bangga pada diri sendiri?
+   "${getV("self5")}"
+
+6) Orang seperti apa yang kamu kagumi? Mengapa?
+   "${getV("self6")}"
+
+[PERTANYAAN TAMBAHAN]
+1) Apakah kamu pernah mengikuti tes bakat atau minat sebelumnya? Jika ya, apa hasilnya?
+   "${getV("add1")}"
+
+2) Apakah kamu memiliki orang tua, guru, atau konselor yang dapat memberikan informasi tentang bakat dan minatmu?
+   "${getV("add2")}"
+
+3) Apakah kamu ada kesulitan dalam menentukan bakat dan minatmu?
+   "${getV("add3")}"
+
+===================================================
+INSTRUKSI FORMAT HASIL ANALISIS (WAJIB DIIKUTI)
+===================================================
+
+1. RINGKASAN PROFIL (1–2 paragraf)
+   - Gambarkan secara singkat sosok ${nama}, pola minat utamanya, cara ia mengisi waktu, dan kesan umum kepribadian belajarnya.
+   - Sebutkan 3–5 kata kunci utama.
+
+2. ANALISIS MINAT & BAKAT PER DIMENSI
+   Buat analisis terstruktur minimal mencakup:
+   - Minat Akademik & Analitis
+   - Minat Seni & Kreativitas
+   - Minat Olahraga & Kinestetik
+   - Minat Sosial, Komunikasi, & Pelayanan
+   - Minat Teknologi, Sains, & Logika
+   - Potensi Kepemimpinan & Kewirausahaan
+
+3. REKOMENDASI JURUSAN DAN ARAH KARIER
+   - Berikan rekomendasi jurusan yang cocok untuk tingkat SMA/SMK dan perkuliahan.
+   - Jelaskan alasan kecocokannya.
+
+4. SARAN STRATEGI PENGEMBANGAN DIRI
+   - Rekomendasikan aktivitas, pelatihan, atau kebiasaan yang dapat dikembangkan dalam 6–12 bulan ke depan.
+   - Berikan tips mengatasi kelemahan dan pesan motivasi realistis.
+
+5. VISUALISASI GRAFIK BATANG (WAJIB)
+   Buat visualisasi dalam bentuk teks/Markdown untuk dimensi berikut:
+   - Akademik & Analitis
+   - Seni & Kreativitas
+   - Olahraga & Kinestetik
+   - Sosial & Komunikasi
+   - Teknologi & Logika
+   - Kepemimpinan & Kewirausahaan
+
+6. GAYA & NADA
+   - Gunakan bahasa Indonesia yang jelas, empatik, profesional, hangat, dan mudah dipahami.
+   - Tegaskan bahwa hasil ini adalah pemetaan potensi berdasarkan jawaban anak, bukan label yang kaku.
+
+Silakan mulai ANALISIS GURU PSIKOLOG berdasarkan seluruh data di atas dan ikuti struktur hasil yang diminta.
+      `.trim();
+
+      outputPrompt.value = promptText;
+    }
+
+    function fallbackCopy(text) {
+      const temp = document.createElement("textarea");
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand("copy");
+        copyBtn.classList.add("copied");
+        copyBtn.textContent = "✅ Prompt Tersalin";
+        setTimeout(() => {
+          copyBtn.classList.remove("copied");
+          copyBtn.textContent = "📋 Copy prompt";
+        }, 1500);
+      } catch (e) {
+        alert("Gagal menyalin prompt. Silakan salin manual.");
+      }
+      document.body.removeChild(temp);
+    }
+
+    function copyPrompt() {
+      const text = outputPrompt.value.trim();
+      if (!text) {
+        alert("Belum ada prompt yang dihasilkan. Silakan klik tombol GURU PSIKOLOG terlebih dahulu.");
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          copyBtn.classList.add("copied");
+          copyBtn.textContent = "✅ Prompt Tersalin";
+          setTimeout(() => {
+            copyBtn.classList.remove("copied");
+            copyBtn.textContent = "📋 Copy prompt";
+          }, 1500);
+        }).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    generateBtn.addEventListener("click", generatePrompt);
+    copyBtn.addEventListener("click", copyPrompt);
+    checkCompletion();
+  </script>
+</body>
+</html>
