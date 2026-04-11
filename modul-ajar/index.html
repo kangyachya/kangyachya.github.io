@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMPT GENERATOR Rencana Pelaksanaan Pembelajaran (DEEP LEARNING)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        textarea,
+        input:not([type="checkbox"]),
+        select {
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            width: 100%;
+            background: #fff;
+        }
+        textarea:focus,
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .spinner {
+            border-top-color: #ffffff;
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #combinedPromptArea {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .btn-phase {
+            width: 100%;
+            color: #fff;
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-phase:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-green-800 via-green-700 to-emerald-600 text-white p-6 rounded-2xl shadow-lg">
+            <h1 class="text-2xl sm:text-3xl font-bold leading-tight">
+                BUAT REKAYASA PROMPT Rencana Pelaksanaan Pembelajaran-RPP (DEEP LEARNING)
+            </h1>
+            <p class="text-sm mt-2 opacity-90">Generator Prompt RPP berbasis Deep Learning • Modern UI</p>
+        </div>
+        <p class="text-sm text-gray-600 mb-6 mt-1">
+            Edited by @Dadang Sudrajat-STMIK IKMI CIREBON @R2026.
+        </p>
+        <p class="text-gray-600 mb-8">Isi kolom-kolom berikut untuk membuat Prompt Lengkap yang siap Anda salin dan tempel ke model AI untuk merumuskan Rencana Pelaksanaan Pembelajaran (RPP).</p>
+
+        <form id="ppmForm" class="space-y-6">
+            <div class="card bg-white p-6 rounded-xl space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">1. IDENTITAS AWAL</h2>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Kelas dan Usia (Contoh: Kelas 10 SMA usia 16 tahun)</label>
+                        <input type="text" id="kelasUsia" value="Kelas 10 SMA/SMK usia 16 tahun" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mata Pelajaran</label>
+                        <input type="text" id="mataPelajaran" value="Matematika" required>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Guru</label>
+                        <input type="text" id="namaGuru" value="Edi Sunaryo, M.Pd." required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Sekolah</label>
+                        <input type="text" id="namaSekolah" value="SMAN 1 Cirebon" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Fase / Semester</label>
+                        <input type="text" id="faseSemester" value="B / Ganjil" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Alokasi Waktu (Contoh SMA/SMK: 1 JP = 45 menit, SMP/MTs: 1 JP = 40 menit)</label>
+                    <input type="text" id="alokasiWaktu" value="3 JP (3 x 45 menit)" required>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">2. IDENTIFIKASI</h2>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">a. Mengidentifikasi Kesiapan Peserta Didik (Konteks)</label>
+                    <textarea id="kesiapanDidik" rows="2" required>Sebagian peserta didik belum memahami materi dan berasal dari keluarga kurang mampu.</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">b. Memahami Karakteristik Materi Pelajaran (Relevansi)</label>
+                    <textarea id="karakteristikMateri" rows="2" required>Materi ini dirancang relevan dengan kehidupan sehari-hari peserta didik, menggunakan konteks transaksi sederhana.</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">c. Menentukan Dimensi Profil Lulusan (Pilih minimal 3)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Penalaran Kritis" checked class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Penalaran Kritis</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Kolaborasi" checked class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Kolaborasi</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Kemandirian" checked class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Kemandirian</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Kreativitas" class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Kreativitas</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Keimanan dan Ketakwaan" class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Keimanan dan Ketakwaan</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Kewargaan" class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Kewargaan</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Kesehatan" class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Kesehatan</span></label>
+                        <label class="inline-flex items-center"><input type="checkbox" name="profilLulusan" value="Komunikasi" class="form-checkbox text-blue-600 rounded"> <span class="ml-2">Komunikasi</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">3. DESAIN PEMBELAJARAN</h2>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">a. Capaian Pembelajaran (CP)</label>
+                    <textarea id="capaianPembelajaran" rows="2" required>Menunjukkan pemahaman dan intuisi bilangan (number sense) pada bilangan desimal.</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">b. Topik Pembelajaran yang Kontekstual</label>
+                    <input type="text" id="topikPembelajaran" value="Bilangan Desimal: Konsep Nilai Tempat dan Aplikasinya dalam Pengukuran Hasil Bumi." required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">c. Mengintegrasikan Lintas Disiplin Ilmu</label>
+                    <textarea id="lintasDisiplin" rows="2" required>Bahasa Indonesia (membaca dan presentasi), Ilmu Pengetahuan Sosial (konsep jual beli dan komoditas).</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">d. Tujuan Pembelajaran</label>
+                    <textarea id="tujuanPembelajaran" rows="3" required>Peserta didik mampu: (1) Mengidentifikasi nilai tempat desimal, (2) Mengubah pecahan ke desimal dan sebaliknya, serta (3) Membandingkan desimal dalam konteks kehidupan sehari-hari.</textarea>
+                </div>
+            </div>
+
+            <div class="card bg-white p-6 rounded-xl space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">4. KERANGKA PEMBELAJARAN MENDALAM</h2>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">a. Praktis Pedagogis (Model Pembelajaran)</label>
+                    <select id="praktisPedagogis">
+                        <option>Problem Based Learning (PBL)</option>
+                        <option>Project Based Learning (PjBL)</option>
+                        <option>Experiential Learning</option>
+                        <option>Simulation and Role Play</option>
+                        <option>Inquiry Learning</option>
+                        <option>Discovery Learning</option>
+                        <option>Case Based Learning</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">b. Kemitraan Pembelajaran (Mitra kerja sama/Narasumber)</label>
+                    <textarea id="kemitraan" rows="2" required>Penjual di kantin sekolah dan orang tua/petani setempat untuk data pengukuran atau harga komoditas.</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">c. Pemanfaatan Digital</label>
+                    <textarea id="digital" rows="2" required>Video visualisasi konsep persepuluhan dan perseratusan. Quizizz atau Kahoot! untuk cek pemahaman awal.</textarea>
+                </div>
+            </div>
+        </form>
+
+        <div class="space-y-6 mt-8">
+            <div class="card bg-green-100 p-6 rounded-xl border border-green-400">
+                <h2 class="text-xl font-bold text-green-800 mb-4">A. BUAT PROMPT RPP LENGKAP</h2>
+                <p class="text-gray-700 mb-4">Gunakan tombol ini untuk menghasilkan prompt teks lengkap, termasuk semua bagian 1 hingga 6.</p>
+                <button type="button" id="generateFullPPMButton" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition duration-300 flex items-center justify-center gap-2">
+                    <span id="buttonTextFull">🧩 Tulis Prompt RPP LENGKAP (Menu 1-4)</span>
+                    <div id="loadingSpinnerFull" class="spinner h-5 w-5 border-4 rounded-full hidden"></div>
+                </button>
+            </div>
+
+            <div class="card bg-blue-100 p-6 rounded-xl border border-blue-400">
+                <h2 class="text-xl font-bold text-blue-800 mb-4">B. BUAT PROMPT PER TAHAP</h2>
+                <p class="text-gray-700">Gunakan tombol di bawah ini untuk menghasilkan prompt spesifik per tahap pembelajaran.</p>
+                <div class="grid sm:grid-cols-3 gap-4 mt-4">
+                    <button type="button" class="btn-phase bg-blue-600 hover:bg-blue-700" data-phase="memahami"><span class="mr-2">✨</span>Prompt TAHAP MEMAHAMI</button>
+                    <button type="button" class="btn-phase bg-blue-600 hover:bg-blue-700" data-phase="mengaplikasi"><span class="mr-2">🛠️</span>Prompt TAHAP MENGAPLIKASI</button>
+                    <button type="button" class="btn-phase bg-blue-600 hover:bg-blue-700" data-phase="merefleksi"><span class="mr-2">🧘</span>Prompt TAHAP MEREFLEKSI</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-white p-6 rounded-xl space-y-4 mt-6">
+            <h2 class="text-xl font-semibold text-purple-700">5. UMPAN BALIK (Alokasi Waktu Per Tahap)</h2>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Alokasi Waktu (contoh: 2 x 35 menit)</label>
+                <input type="text" id="jpTambahan" placeholder="Contoh: 2 x 35 menit" value="2 x 45 menit">
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+            <button type="button" id="downloadHtmlButton" class="bg-slate-700 hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded-xl transition duration-200">
+                ⬇️ Export HTML
+            </button>
+            <button type="button" id="printButton" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-xl transition duration-200">
+                🖨️ Cetak Halaman
+            </button>
+        </div>
+
+        <div id="resultContainer" class="mt-10 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" id="resultTitle">Teks Prompt yang Dihasilkan</h2>
+            <p class="text-gray-600 mb-4" id="resultInstruction">Salin seluruh teks di bawah ini ke model AI Anda.</p>
+            <div id="resultContent" class="bg-white p-6 rounded-xl border border-gray-200"></div>
+        </div>
+
+        <div id="errorContainer" class="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl hidden">
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <footer class="mt-12 py-4 text-center text-sm text-gray-500 border-t border-gray-200">
+        Source@Eko S
+    </footer>
+
+    <script>
+        function getSelectedProfiles() {
+            const checkboxes = document.querySelectorAll('input[name="profilLulusan"]:checked');
+            return Array.from(checkboxes).map(cb => cb.value).join(', ');
+        }
+
+        function getFormData() {
+            return {
+                kelasUsia: document.getElementById('kelasUsia').value.trim(),
+                mataPelajaran: document.getElementById('mataPelajaran').value.trim(),
+                capaianPembelajaran: document.getElementById('capaianPembelajaran').value.trim(),
+                topikPembelajaran: document.getElementById('topikPembelajaran').value.trim(),
+                tujuanPembelajaran: document.getElementById('tujuanPembelajaran').value.trim(),
+                praktisPedagogis: document.getElementById('praktisPedagogis').value,
+                dimensiProfilLulusan: getSelectedProfiles(),
+                jpTambahan: document.getElementById('jpTambahan').value.trim() || '...'
+            };
+        }
+
+        function validateProfiles() {
+            const checked = document.querySelectorAll('input[name="profilLulusan"]:checked').length;
+            if (checked < 3) {
+                throw new Error('Pilih minimal 3 Dimensi Profil Lulusan.');
+            }
+        }
+
+        function createPrompt() {
+            validateProfiles();
+            const data = getFormData();
+            const alokasiWaktu = document.getElementById('alokasiWaktu').value.trim();
+            const namaGuru = document.getElementById('namaGuru').value.trim();
+            const namaSekolah = document.getElementById('namaSekolah').value.trim();
+            const faseSemester = document.getElementById('faseSemester').value.trim();
+            const kesiapanDidik = document.getElementById('kesiapanDidik').value.trim();
+            const karakteristikMateri = document.getElementById('karakteristikMateri').value.trim();
+            const lintasDisiplin = document.getElementById('lintasDisiplin').value.trim();
+            const kemitraan = document.getElementById('kemitraan').value.trim();
+            const digital = document.getElementById('digital').value.trim();
+
+            const systemPrompt = 'Anda adalah guru expert yang mahir membuat Perencanaan Pembelajaran Mendalam (PPM) dengan pendekatan Deep Learning (Mindful, Meaningful, Joyful Learning) dan 3 pengalaman belajar (Memahami, Mengaplikasikan, Merefleksikan). Anda harus membuat dokumen PPM lengkap dalam format Markdown berdasarkan semua input yang disediakan, mengikuti semua struktur dan sintaks yang diminta, termasuk pertanyaan pemantik, checking understanding, media, manfaat, dan rubrik asesmen lengkap.';
+
+            const userQuery = `
+Tolong buatkan dokumen Rencana Pelaksanaan Pembelajaran (RPP) dengan pendekatan Deep Learning untuk:
+Kelas dan Usia: ${data.kelasUsia}
+Mata Pelajaran: ${data.mataPelajaran}
+
+1. IDENTITAS AWAL:
+- Nama Guru: ${namaGuru}
+- Nama Sekolah: ${namaSekolah}
+- Fase/Semester: ${faseSemester}
+- Alokasi Waktu: ${alokasiWaktu}
+
+2. IDENTIFIKASI:
+- Kesiapan Peserta Didik: ${kesiapanDidik}
+- Karakteristik Materi: ${karakteristikMateri}
+- Dimensi Profil Lulusan: ${data.dimensiProfilLulusan}
+
+3. DESAIN PEMBELAJARAN:
+- Capaian Pembelajaran: ${data.capaianPembelajaran}
+- Topik Pembelajaran: ${data.topikPembelajaran}
+- Lintas Disiplin Ilmu: ${lintasDisiplin}
+- Tujuan Pembelajaran: ${data.tujuanPembelajaran}
+
+4. KERANGKA PEMBELAJARAN MENDALAM:
+- Praktis Pedagogis (Model): ${data.praktisPedagogis}. Pastikan sintaks model ini diterapkan di tahap Mengaplikasikan.
+- Kemitraan Pembelajaran: ${kemitraan}
+- Pemanfaatan Digital: ${digital}
+
+5. PENGALAMAN BELAJAR (DIKEMBANGKAN OLEH AI BERDASARKAN PRINSIP DEEP LEARNING):
+Harap kembangkan Pengalaman Belajar dengan detail berikut:
+• AWAL: Tuliskan prinsip pembelajaran (misal: Berkesadaran, Bermakna, Menggembirakan). Rancang kegiatan awal yang komprehensif (salam, kabar, kehadiran, doa, lagu nasional, keyakinan kelas). Buatkan kalimat apersepsi yang mengaitkan materi sebelumnya (sesuai Tujuan Pembelajaran). Sampaikan Tujuan Pembelajaran.
+• INTI: Siswa aktif terlibat dalam pengalaman belajar memahami, mengaplikasi, dan merefleksi. Guru menerapkan prinsip pembelajaran berkesadaran, bermakna, menyenangkan untuk mencapai tujuan pembelajaran.
+• Memahami: Tuliskan prinsip pembelajaran, meliputi pengetahuan esensial, pengetahuan aplikatif, pengetahuan nilai dan karakter.
+• Mengaplikasi: Tuliskan prinsip pembelajaran, meliputi pendalaman pengetahuan yang mendetail dan sertakan langkah-langkah pembelajaran sesuai sintaks model ${data.praktisPedagogis}.
+• Merefleksi: Tuliskan prinsip pembelajaran, meliputi regulasi diri (perencanaan, pelaksanaan, pengawasan, dan evaluasi terhadap cara belajar murid).
+• KOMPONEN PENDUKUNG: Sertakan Pertanyaan Pemantik (kritis, analisis, terbuka, mendalam) dan Pertanyaan Checking Understanding untuk setiap pengalaman belajar. Sertakan Media Pembelajaran yang sesuai dan Poin Manfaat pembelajaran yang mengaitkan Tujuan Pembelajaran dengan Dimensi Profil Lulusan.
+• PENUTUP: Tuliskan prinsip pembelajaran. Rancang tahap penutup (umpan balik konstruktif, penyimpulan, apresiasi, dan perencanaan pembelajaran selanjutnya).
+
+6. ASESMEN (DIKEMBANGKAN OLEH AI):
+Harap kembangkan Asesmen dengan detail berikut:
+a. Asesmen Awal: Buatkan 3 soal asesmen awal (diagnostik).
+b. Asesmen Proses: Buatkan format instrumen Catatan Anekdotal.
+c. Asesmen Akhir (Rubrik): Buat rubrik penilaian (deskripsi untuk B = Berkembang, C = Cakap, M = Mahir) dalam bentuk tabel yang mengaitkan dengan Dimensi Profil Lulusan: ${data.dimensiProfilLulusan}.
+
+Urutkan output sesuai dengan urutan: 1. IDENTITAS AWAL, 2. IDENTIFIKASI, 3. DESAIN PEMBELAJARAN, 4. KERANGKA PEMBELAJARAN MENDALAM, 5. PENGALAMAN BELAJAR, 6. ASESMEN.
+            `.trim();
+
+            return {
+                combinedPrompt: `${systemPrompt}\n\n${userQuery}`,
+                title: 'Teks Prompt RPP LENGKAP',
+                instruction: 'Salin seluruh teks di bawah ini ke model AI Anda untuk menghasilkan dokumen PPM lengkap.'
+            };
+        }
+
+        function generateSpecificPrompt(phase) {
+            validateProfiles();
+            const data = getFormData();
+            let template = '';
+            let title = '';
+
+            const context = `
+Sebagai guru expert yang profesional dan berpengalaman, dengan konteks:
+- Kelas: ${data.kelasUsia}
+- Mata Pelajaran: ${data.mataPelajaran}
+- Topik: ${data.topikPembelajaran}
+- Tujuan Pembelajaran: ${data.tujuanPembelajaran}
+- Model Pembelajaran: ${data.praktisPedagogis}
+- Dimensi Profil Lulusan: ${data.dimensiProfilLulusan}
+
+[TUGAS]: Berdasarkan konteks di atas,
+            `.trim();
+
+            const jpText = data.jpTambahan || '...';
+
+            switch (phase) {
+                case 'memahami':
+                    title = 'Prompt Khusus: Tahap MEMAHAMI';
+                    template = `Karena kamu sebagai guru expert yang profesional dan berpengalaman, buatlah lebih detail dan lengkap skenario pembelajarannya, berdurasi ${jpText}, pada tahap memahami. Tahap ini menekankan peserta didik aktif mengonstruksi pengetahuan agar dapat memahami secara mendalam konsep atau materi dari berbagai sumber dan konteks. Pengetahuan pada fase ini terdiri dari pengetahuan esensial, pengetahuan aplikatif, dan pengetahuan nilai serta karakter. Pada kegiatan memahami, murid membangun kesadaran, mengonstruksi pengetahuan, dan memahami materi secara mendalam dari berbagai sumber dan konteks. Tahap memahami relevan dengan taksonomi SOLO pada unistruktural dan multistruktural, serta mengingat dan memahami pada taksonomi Bloom. Sertakan skala pada rubrik: B = Berkembang, C = Cakap, M = Mahir. Sajikan dalam tabel.`;
+                    break;
+                case 'mengaplikasi':
+                    title = 'Prompt Khusus: Tahap MENGAPLIKASI';
+                    template = `Karena kamu sebagai guru expert yang profesional dan berpengalaman, buatlah lebih detail dan lengkap skenario pembelajarannya, berdurasi ${jpText}, pada tahap mengaplikasikan. Tahap ini menekankan aktivitas peserta didik dalam menerapkan pengetahuan ke kehidupan secara kontekstual. Pengetahuan diperoleh melalui pendalaman materi dan diterapkan untuk memecahkan masalah nyata secara individu maupun kolaboratif dengan pendekatan kontekstual dan multidisiplin. Tahap mengaplikasi relevan dengan aspek relasional pada taksonomi SOLO serta menerapkan dan menganalisis pada taksonomi Bloom. Sertakan juga langkah-langkah pembelajaran sesuai sintaks model pembelajaran ${data.praktisPedagogis}. Sertakan skala pada rubrik: B = Berkembang, C = Cakap, M = Mahir. Sajikan dalam tabel.`;
+                    break;
+                case 'merefleksi':
+                    title = 'Prompt Khusus: Tahap MEREFLEKSI';
+                    template = `Karena kamu sebagai guru expert yang profesional dan berpengalaman, buatlah lebih detail dan lengkap skenario pembelajarannya, berdurasi ${jpText}, pada tahap merefleksikan. Tahap ini merupakan proses ketika peserta didik mengevaluasi dan memaknai proses serta hasil dari tindakan atau praktik nyata yang telah mereka lakukan. Tahap refleksi melibatkan regulasi diri sebagai kemampuan individu untuk mengelola proses belajar secara mandiri, meliputi perencanaan, pelaksanaan, pengawasan, dan evaluasi terhadap cara belajar mereka. Tahap merefleksi relevan dengan berpikir abstrak mendalam pada taksonomi SOLO serta mengevaluasi dan mencipta pada taksonomi Bloom. Sertakan skala pada rubrik: B = Berkembang, C = Cakap, M = Mahir. Sajikan dalam tabel.`;
+                    break;
+                default:
+                    return;
+            }
+
+            displayPrompt({
+                combinedPrompt: `${context}\n\n${template}`,
+                title,
+                instruction: 'Salin teks di bawah ini untuk mendapatkan skenario pembelajaran spesifik per tahap. Pastikan Anda telah mengisi Alokasi Waktu di Menu 5.'
+            });
+        }
+
+        function displayPrompt(promptData) {
+            const resultContent = document.getElementById('resultContent');
+            const resultContainer = document.getElementById('resultContainer');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultInstruction = document.getElementById('resultInstruction');
+
+            resultTitle.textContent = promptData.title;
+            resultInstruction.textContent = promptData.instruction;
+
+            resultContent.innerHTML = `
+                <div class="space-y-4">
+                    <textarea id="combinedPromptArea" rows="20" class="w-full text-sm p-4 border-2 border-indigo-300 rounded-lg bg-indigo-50 font-mono resize-none" readonly></textarea>
+                    <button id="copyPromptButton" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition duration-200">
+                        Salin Teks Prompt
+                    </button>
+                </div>
+            `;
+
+            const textarea = document.getElementById('combinedPromptArea');
+            textarea.value = promptData.combinedPrompt;
+
+            document.getElementById('copyPromptButton').addEventListener('click', async () => {
+                const button = document.getElementById('copyPromptButton');
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        await navigator.clipboard.writeText(textarea.value);
+                    } else {
+                        textarea.focus();
+                        textarea.select();
+                        document.execCommand('copy');
+                    }
+                    button.textContent = '✅ Berhasil Disalin!';
+                    setTimeout(() => button.textContent = 'Salin Teks Prompt', 2000);
+                } catch (err) {
+                    console.error('Gagal menyalin:', err);
+                    button.textContent = '❌ Gagal Menyalin!';
+                    setTimeout(() => button.textContent = 'Salin Teks Prompt', 2000);
+                }
+            });
+
+            resultContainer.classList.remove('hidden');
+            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        async function generatePPM() {
+            const generateButton = document.getElementById('generateFullPPMButton');
+            const buttonText = document.getElementById('buttonTextFull');
+            const loadingSpinner = document.getElementById('loadingSpinnerFull');
+            const errorContainer = document.getElementById('errorContainer');
+            const errorMessage = document.getElementById('errorMessage');
+
+            generateButton.disabled = true;
+            buttonText.textContent = 'Menyusun Prompt...';
+            loadingSpinner.classList.remove('hidden');
+            errorContainer.classList.add('hidden');
+            errorMessage.textContent = '';
+
+            try {
+                const promptData = createPrompt();
+                displayPrompt(promptData);
+            } catch (error) {
+                console.error('Error generating prompt:', error);
+                errorContainer.classList.remove('hidden');
+                errorMessage.textContent = `Terjadi kesalahan saat menyusun prompt: ${error.message}`;
+            } finally {
+                generateButton.disabled = false;
+                buttonText.textContent = '🧩 Tulis Prompt RPP LENGKAP (Menu 1-4)';
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        function exportCurrentHtml() {
+            const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'prompt-generator-rpp-deep-learning.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('generateFullPPMButton').addEventListener('click', generatePPM);
+        document.querySelectorAll('[data-phase]').forEach(btn => {
+            btn.addEventListener('click', () => generateSpecificPrompt(btn.dataset.phase));
+        });
+        document.getElementById('downloadHtmlButton').addEventListener('click', exportCurrentHtml);
+        document.getElementById('printButton').addEventListener('click', () => window.print());
+    </script>
+</body>
+</html>
